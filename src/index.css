@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
 * {
   font-family: "nunito", sans-serif;
   font-size: 22px;
@@ -9,7 +11,9 @@ body {
 
   background-size: 36px 36px;
   background-position: 0 0, 18px 18px;
-  background-color: #f4fffd;
+  /* background-color: #f4fffd; */
+  background:  #011936;
+background: linear-gradient(271deg, rgba(1, 25, 54, 1) 0%, rgba(244, 255, 253, 1) 50%, rgba(237, 37, 78, 1) 100%);
 }
 
 h1,
@@ -67,19 +71,22 @@ h2 {
   margin-top: 25px;
   display: flex;
   flex-direction: column;
-  min-height: 400px;
+  
   background-color: #ed254e;
   width: 450px;
   justify-content: center;
   align-items: center;
 }
 
-input {
+input[type='text'] {
   border: none;
-  font-size: 15px;
-  border-radius: 10px;
+  font-size: 16px;
+  border-radius: 8px;
   margin-top: 10px;
-  padding: 5px;
+  text-align: center;
+  outline: none;
+ width: 80%;
+ text-transform: capitalize;
 }
 button {
   background-color: rgb(254, 254, 242);
@@ -117,5 +124,11 @@ button:hover {
   .Gifpage{
     display: flex;
     flex-direction: column;
+  }
+
+  .Gif,.Gif2{
+    width: 70%;
+    height: 250px;
+      margin-bottom: 20px;
   }
 }
