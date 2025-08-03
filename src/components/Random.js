@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Spinner from "./Spinner";
 import useGif from "../hooks/useGif";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer,Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -23,28 +23,45 @@ const Random = () => {
   } = useGif(tag);
 
   return (
-    <div className="Gifpage">
-        <ToastContainer position="top-center" autoClose={3000} />
+    <div>
       <h1>Random GIFS</h1>
+      <div className="Gifpage">
 
-      {/* Section 1: Completely random gif */}
-      <div className="Gif">
-        <h2>A Random Gif</h2>
-        {loadingRandom ? <Spinner /> : <img src={randomGif} alt="Random Gif" width="200px" />}
-        <button onClick={fetchRandomGif}>Generate Random</button>
-      </div>
+<ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+transition={Bounce}
+/>
 
-      {/* Section 2: Tagged gif */}
-      <div className="Gif2">
-        <h2>Tagged Gif</h2>
-        {loadingTagged ? <Spinner /> : <img src={taggedGif} alt="Tagged Gif" width="200px" />}
-        <input
-          type="text"
-          placeholder="Enter tag"
-          onChange={(e) => setTag(e.target.value)}
-          value={tag}
-        />
-        <button onClick={fetchTaggedGif}>Generate</button>
+        <div className="Gif">
+          <h2>A Random Gif</h2>
+          <div className="gif-img-wrapper">
+            {loadingRandom ? <Spinner /> : <img src={randomGif} alt="Random Gif" className="gif-img" />}
+          </div>
+          <button onClick={fetchRandomGif}>Generate Random</button>
+        </div>
+
+        <div className="Gif2">
+          <h2>Search Gif</h2>
+          <div className="gif-img-wrapper">
+            {loadingTagged ? <Spinner /> : <img src={taggedGif} alt="Tagged Gif" className="gif-img" />}
+          </div>
+          <input
+            type="text"
+            placeholder="Enter tag"
+            onChange={(e) => setTag(e.target.value)}
+            value={tag}
+          />
+          <button onClick={() => fetchTaggedGif(tag)}>Generate</button>
+        </div>
       </div>
     </div>
   );
